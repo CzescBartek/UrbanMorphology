@@ -1,0 +1,22 @@
+{
+  "square_size_meters": 400,
+  "output_csv_path": "../data/combined_urban_features.csv",
+  "cities": {
+    "Copenhagen Municipality, Denmark": {
+      "grid_path": "../data/copenhagen_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Copenhagen Center, Denmark",
+        "XIX_Century_Blocks": "Norrebro, Copenhagen, Denmark",
+        "Modern_Urbanism": "Orestad, Copenhagen, Denmark"
+      }
+    },
+    "Aarhus Kommune, Denmark": {
+      "grid_path": "../data/aarhus_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Aarhus Center, Denmark",
+        "XIX_Century_Blocks": "Frederiksbjerg, Aarhus, Denmark",
+        "Modern_Urbanism": "Aarhus O, Denmark"
+      }
+    }
+  }
+}
