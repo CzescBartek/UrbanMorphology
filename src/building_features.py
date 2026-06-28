@@ -14,7 +14,8 @@ def extract_building_features(b_in_cell, cell_geometry):
         'avg_building_area': 0.0,
         'avg_building_perimeter': 0.0,
         'shape_complexity_ratio': 0.0,
-        'courtyard_index': 0.0
+        'courtyard_index': 0.0,
+        'std_building_area': 0.0,
     }
     
     building_count = len(b_in_cell)
@@ -30,7 +31,7 @@ def extract_building_features(b_in_cell, cell_geometry):
     features['building_density'] = building_areas.sum() / cell_area
     features['avg_building_area'] = building_areas.mean()
     features['avg_building_perimeter'] = building_perimeters.mean()
-    
+    features['avg_building_area'] = building_areas.mean()
     # 2. Shape Complexity (Perimeter / Area)
     
     features['shape_complexity_ratio'] = (building_perimeters / (building_areas + 1e-5)).mean()

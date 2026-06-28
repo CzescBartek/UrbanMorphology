@@ -3,19 +3,92 @@
   "output_csv_path": "../data/combined_urban_features.csv",
   "cities": {
     "Copenhagen Municipality, Denmark": {
-      "grid_path": "../data/copenhagen_grid.geojson",
+      "grid_path": "../data/city_data/copenhagen_grid.geojson",
       "zones": {
         "Medieval_Center": "Copenhagen Center, Denmark",
         "XIX_Century_Blocks": "Norrebro, Copenhagen, Denmark",
         "Modern_Urbanism": "Orestad, Copenhagen, Denmark"
       }
     },
+    "Odense Kommune, Denmark": {
+      "grid_path": "../data/city_data/odense_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Odense Center, Denmark",
+        "XIX_Century_Blocks": "Skibhuskvarteret, Odense, Denmark",
+        "Modern_Urbanism": "Odense Havn, Denmark"
+      }
+    },
     "Aarhus Kommune, Denmark": {
-      "grid_path": "../data/aarhus_grid.geojson",
+      "grid_path": "../data/city_data/aarhus_grid.geojson",
       "zones": {
         "Medieval_Center": "Aarhus Center, Denmark",
         "XIX_Century_Blocks": "Frederiksbjerg, Aarhus, Denmark",
         "Modern_Urbanism": "Aarhus O, Denmark"
+      }
+    },
+    "Aalborg Kommune, Denmark": {
+      "grid_path": "../data/city_data/aalborg_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Aalborg Center, Denmark",
+        "XIX_Century_Blocks": "Vestbyen, Aalborg, Denmark",
+        "Modern_Urbanism": "Aalborg Havnefront, Denmark"
+      }
+    },
+    "Stockholm, Sweden": {
+      "grid_path": "../data/city_data/stockholm_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Gamla Stan, Stockholm, Sweden",
+        "XIX_Century_Blocks": "Vasastan, Stockholm, Sweden",
+        "Modern_Urbanism": "Hammarby Sjostad, Stockholm, Sweden"
+      }
+    },
+
+    "Malmo, Sweden": {
+      "grid_path": "../data/city_data/malmo_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Gamla Staden, Malmo, Sweden",
+        "XIX_Century_Blocks": "Mollevangen, Malmo, Sweden",
+        "Modern_Urbanism": "Vastra Hamnen, Malmo, Sweden"
+      }
+    },
+    "Uppsala, Sweden": {
+      "grid_path": "../data/city_data/uppsala_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Uppsala Center, Sweden",
+        "XIX_Century_Blocks": "Luthagen, Uppsala, Sweden",
+        "Modern_Urbanism": "Rosendal, Uppsala, Sweden"
+      }
+    },
+    "Oslo, Norway": {
+      "grid_path": "../data/city_data/oslo_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Kvadraturen, Oslo, Norway",
+        "XIX_Century_Blocks": "Grunerlokka, Oslo, Norway",
+        "Modern_Urbanism": "Bjorvika, Oslo, Norway"
+      }
+    },
+    "Bergen, Norway": {
+      "grid_path": "../data/city_data/bergen_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Bryggen, Bergen, Norway",
+        "XIX_Century_Blocks": "Sandviken, Bergen, Norway",
+        "Modern_Urbanism": "Solheimsviken, Bergen, Norway"
+      }
+    },
+    "Trondheim, Norway": {
+      "grid_path": "../data/city_data/trondheim_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Midtbyen, Trondheim, Norway",
+        "XIX_Century_Blocks": "Elgeseter, Trondheim, Norway",
+        "Modern_Urbanism": "Solsiden, Trondheim, Norway"
+      }
+    },
+    "Stavanger, Norway": {
+      "grid_path": "../data/city_data/stavanger_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Gamle Stavanger, Norway",
+        "XIX_Century_Blocks": "Storhaug, Stavanger, Norway",
+        "Modern_Urbanism": "Stavanger Ost, Norway"
       }
     }
   }

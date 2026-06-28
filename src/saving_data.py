@@ -9,7 +9,7 @@ def load_pipeline_config(config_path="../data/config.json"):
     with open(config_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def generate_urban_grid(place_name, square_size=400, output_filename=None, plot_result=True):
+def generate_urban_grid(place_name, square_size=400, output_filename=None, plot_result=False):
     ox.settings.use_cache = True
     
     print(f"Loading boundary for: {place_name}...")
@@ -60,5 +60,5 @@ if __name__ == "__main__":
             place_name=city_name, 
             square_size=square_size, 
             output_filename=city_config["grid_path"], 
-            plot_result=True
+            plot_result=False
         )
