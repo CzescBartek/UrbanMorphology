@@ -1,46 +1,63 @@
-import osmnx as ox
-import geopandas as gpd
+import numpy as np
 import pandas as pd
-from shapely.geometry import box
 
-def extract_building_features(b_in_cell, cell_geometry):
-    """
-    Extracts geometric and morphometric features from a collection of buildings
-    inside a specific grid cell.
-    """
-    features = {
-        'building_count': 0,
-        'building_density': 0.0,
-        'avg_building_area': 0.0,
-        'avg_building_perimeter': 0.0,
-        'shape_complexity_ratio': 0.0,
-        'courtyard_index': 0.0,
-        'std_building_area': 0.0,
-    }
+def extract_building_features(buildings_df, cell_geometry):
+    if buildings_df.empty:
+        return {
+            'building_count': 0,
+            'building_density': 0.0,
+            'avg_building_area': 0.0,
+            'std_building_area': 0.0,
+            'shape_complexity_ratio': 1.0,
+            'courtyard_index': 0.0,
+            'avg_building_elongation': 1.0
+        }
     
-    building_count = len(b_in_cell)
-    if building_count == 0:
-        return features
-        
+    b_count = len(buildings_df)
     cell_area = cell_geometry.area
-    building_areas = b_in_cell.geometry.area
-    building_perimeters = b_in_cell.geometry.length
     
-    # 1. Basic counts and densities
-    features['building_count'] = building_count
-    features['building_density'] = building_areas.sum() / cell_area
-    features['avg_building_area'] = building_areas.mean()
-    features['avg_building_perimeter'] = building_perimeters.mean()
-    features['avg_building_area'] = building_areas.mean()
-    # 2. Shape Complexity (Perimeter / Area)
+    buildings_clipped = buildings_df.clip(cell_geometry)
+    total_b_area = buildings_clipped.geometry.area.sum()
+    b_density = total_b_area / cell_area if cell_area > 0 else 0.0
     
-    features['shape_complexity_ratio'] = (building_perimeters / (building_areas + 1e-5)).mean()
-
-    try:
-        convex_hulls = b_in_cell.geometry.convex_hull
-        features['courtyard_index'] = (building_areas / (convex_hulls.area + 1e-5)).mean()
-    except Exception:
-        features['courtyard_index'] = 1.0 # Default fallback if geometry error occurs
-
-    return features
-
+    raw_areas = buildings_df.geometry.area
+    avg_area = raw_areas.mean()
+    std_area = raw_areas.std() if b_count > 1 else 0.0
+    
+    perimeters = buildings_df.geometry.length
+    complexity = perimeters / (4 * np.sqrt(raw_areas) + 1e-5)
+    avg_complexity = complexity.mean()
+    
+    convex_areas = buildings_df.geometry.convex_hull.area
+    courtyard_idx = (convex_areas - raw_areas) / (raw_areas + 1e-5)
+    avg_courtyard = courtyard_idx.mean()
+    
+    elongations = []
+    for geom in buildings_df.geometry:
+        try:
+            rot_rect = geom.minimum_rotated_rectangle
+            x, y = rot_rect.exterior.coords.xy
+            edge_lengths = [
+                np.sqrt((x[i] - x[i+1])**2 + (y[i] - y[i+1])**2)
+                for i in range(3)
+            ]
+            side1, side2 = edge_lengths[0], edge_lengths[1]
+            
+            if min(side1, side2) > 0:
+                elongations.append(max(side1, side2) / min(side1, side2))
+            else:
+                elongations.append(1.0)
+        except:
+            elongations.append(1.0)
+            
+    avg_elongation = np.mean(elongations) if elongations else 1.0
+    
+    return {
+        'building_count': b_count,
+        'building_density': b_density,
+        'avg_building_area': avg_area,
+        'std_building_area': std_area,
+        'shape_complexity_ratio': avg_complexity,
+        'courtyard_index': avg_courtyard,
+        'avg_building_elongation': avg_elongation
+    }

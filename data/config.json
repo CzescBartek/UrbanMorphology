@@ -10,28 +10,12 @@
         "Modern_Urbanism": "Orestad, Copenhagen, Denmark"
       }
     },
-    "Odense Kommune, Denmark": {
-      "grid_path": "../data/city_data/odense_grid.geojson",
-      "zones": {
-        "Medieval_Center": "Odense Center, Denmark",
-        "XIX_Century_Blocks": "Skibhuskvarteret, Odense, Denmark",
-        "Modern_Urbanism": "Odense Havn, Denmark"
-      }
-    },
     "Aarhus Kommune, Denmark": {
       "grid_path": "../data/city_data/aarhus_grid.geojson",
       "zones": {
         "Medieval_Center": "Aarhus Center, Denmark",
         "XIX_Century_Blocks": "Frederiksbjerg, Aarhus, Denmark",
         "Modern_Urbanism": "Aarhus O, Denmark"
-      }
-    },
-    "Aalborg Kommune, Denmark": {
-      "grid_path": "../data/city_data/aalborg_grid.geojson",
-      "zones": {
-        "Medieval_Center": "Aalborg Center, Denmark",
-        "XIX_Century_Blocks": "Vestbyen, Aalborg, Denmark",
-        "Modern_Urbanism": "Aalborg Havnefront, Denmark"
       }
     },
     "Stockholm, Sweden": {
@@ -42,7 +26,14 @@
         "Modern_Urbanism": "Hammarby Sjostad, Stockholm, Sweden"
       }
     },
-
+    "Gothenburg, Sweden": {
+      "grid_path": "../data/city_data/gothenburg_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Inom Vallgraven, Gothenburg, Sweden",
+        "XIX_Century_Blocks": "Vasastaden, Gothenburg, Sweden",
+        "Modern_Urbanism": "Lindholmen, Gothenburg, Sweden"
+      }
+    },
     "Malmo, Sweden": {
       "grid_path": "../data/city_data/malmo_grid.geojson",
       "zones": {
@@ -51,44 +42,92 @@
         "Modern_Urbanism": "Vastra Hamnen, Malmo, Sweden"
       }
     },
-    "Uppsala, Sweden": {
-      "grid_path": "../data/city_data/uppsala_grid.geojson",
+    "Hamburg, Germany": {
+      "grid_path": "../data/city_data/hamburg_grid.geojson",
       "zones": {
-        "Medieval_Center": "Uppsala Center, Sweden",
-        "XIX_Century_Blocks": "Luthagen, Uppsala, Sweden",
-        "Modern_Urbanism": "Rosendal, Uppsala, Sweden"
+        "Medieval_Center": "Hamburg Altstadt, Germany",
+        "XIX_Century_Blocks": "Eimsbuttel, Hamburg, Germany",
+        "Modern_Urbanism": "Hafencity, Hamburg, Germany"
       }
     },
-    "Oslo, Norway": {
-      "grid_path": "../data/city_data/oslo_grid.geojson",
+    "Berlin, Germany": {
+      "grid_path": "../data/city_data/berlin_grid.geojson",
       "zones": {
-        "Medieval_Center": "Kvadraturen, Oslo, Norway",
-        "XIX_Century_Blocks": "Grunerlokka, Oslo, Norway",
-        "Modern_Urbanism": "Bjorvika, Oslo, Norway"
+        "Medieval_Center": "Nikolaiviertel, Berlin, Germany",
+        "XIX_Century_Blocks": "Prenzlauer Berg, Berlin, Germany",
+        "Modern_Urbanism": "Europacity, Berlin, Germany"
       }
     },
-    "Bergen, Norway": {
-      "grid_path": "../data/city_data/bergen_grid.geojson",
+    "Leipzig, Germany": {
+      "grid_path": "../data/city_data/leipzig_grid.geojson",
       "zones": {
-        "Medieval_Center": "Bryggen, Bergen, Norway",
-        "XIX_Century_Blocks": "Sandviken, Bergen, Norway",
-        "Modern_Urbanism": "Solheimsviken, Bergen, Norway"
+        "Medieval_Center": "Leipzig Zentrum, Germany",
+        "XIX_Century_Blocks": "Sudvorstadt, Leipzig, Germany",
+        "Modern_Urbanism": "Plagwitz, Leipzig, Germany"
       }
     },
-    "Trondheim, Norway": {
-      "grid_path": "../data/city_data/trondheim_grid.geojson",
+    "Dresden, Germany": {
+      "grid_path": "../data/city_data/dresden_grid.geojson",
       "zones": {
-        "Medieval_Center": "Midtbyen, Trondheim, Norway",
-        "XIX_Century_Blocks": "Elgeseter, Trondheim, Norway",
-        "Modern_Urbanism": "Solsiden, Trondheim, Norway"
+        "Medieval_Center": "Dresden Altstadt, Germany",
+        "XIX_Century_Blocks": "Aussere Neustadt, Dresden, Germany",
+        "Modern_Urbanism": "Postplatz, Dresden, Germany"
       }
     },
-    "Stavanger, Norway": {
-      "grid_path": "../data/city_data/stavanger_grid.geojson",
+    "Hanover, Germany": {
+      "grid_path": "../data/city_data/hanover_grid.geojson",
       "zones": {
-        "Medieval_Center": "Gamle Stavanger, Norway",
-        "XIX_Century_Blocks": "Storhaug, Stavanger, Norway",
-        "Modern_Urbanism": "Stavanger Ost, Norway"
+        "Medieval_Center": "Hannover Mitte, Germany",
+        "XIX_Century_Blocks": "Oststadt, Hannover, Germany",
+        "Modern_Urbanism": "Kronsrode, Hannover, Germany"
+      }
+    },
+    "Vienna, Austria": {
+      "grid_path": "../data/city_data/vienna_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Innere Stadt, Vienna, Austria",
+        "XIX_Century_Blocks": "Neubau, Vienna, Austria",
+        "Modern_Urbanism": "Seestadt Aspern, Vienna, Austria"
+      }
+    },
+    "Amsterdam, Netherlands": {
+      "grid_path": "../data/city_data/amsterdam_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Amsterdam Centrum, Netherlands",
+        "XIX_Century_Blocks": "De Pijp, Amsterdam, Netherlands",
+        "Modern_Urbanism": "Zuidas, Amsterdam, Netherlands"
+      }
+    },
+    "Rotterdam, Netherlands": {
+      "grid_path": "../data/city_data/rotterdam_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Rotterdam Centrum, Netherlands",
+        "XIX_Century_Blocks": "Oude Noorden, Rotterdam, Netherlands",
+        "Modern_Urbanism": "Kop van Zuid, Rotterdam, Netherlands"
+      }
+    },
+    "Wroclaw, Poland": {
+      "grid_path": "../data/city_data/wroclaw_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Stare Miasto, Wroclaw, Poland",
+        "XIX_Century_Blocks": "Nadodrze, Wroclaw, Poland",
+        "Modern_Urbanism": "Nowe Zerniki, Wroclaw, Poland"
+      }
+    },
+    "Poznan, Poland": {
+      "grid_path": "../data/city_data/poznan_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Stare Miasto, Poznan, Poland",
+        "XIX_Century_Blocks": "Jezyce, Poznan, Poland",
+        "Modern_Urbanism": "Wolne Tory, Poznan, Poland"
+      }
+    },
+    "Krakow, Poland": {
+      "grid_path": "../data/city_data/krakow_grid.geojson",
+      "zones": {
+        "Medieval_Center": "Stare Miasto, Krakow, Poland",
+        "XIX_Century_Blocks": "Podgorze, Krakow, Poland",
+        "Modern_Urbanism": "Zablocie, Krakow, Poland"
       }
     }
   }

@@ -37,7 +37,6 @@ def get_city_zones_by_buffer(zones_config, target_crs):
             print(f"  Critical Error: Could not resolve location {district_name}: {e}")
                 
     return loaded_zones
-
 def run_pipeline_for_city(place_name, grid_geojson_path, zones_config):
     print(f"\n--- Processing: {place_name} ---")
     if not os.path.exists(grid_geojson_path):
@@ -48,7 +47,6 @@ def run_pipeline_for_city(place_name, grid_geojson_path, zones_config):
     local_utm_crs = spatial_grid.estimate_utm_crs()
     spatial_grid_m = spatial_grid.to_crs(local_utm_crs)
     
-    # Przekazujemy lokalny CRS, aby strefy pokrywały się z siatką
     zones = get_city_zones_by_buffer(zones_config, local_utm_crs)
     
     print("Downloading raw OSM data for feature extraction...")
@@ -64,7 +62,7 @@ def run_pipeline_for_city(place_name, grid_geojson_path, zones_config):
         return []
     
     print(f"Starting processing loop for {len(spatial_grid_m)} cells...")
-    city_features = []
+    city_rows = []
     
     for idx, cell in spatial_grid_m.iterrows():
         target_style = "Unknown"
@@ -85,18 +83,40 @@ def run_pipeline_for_city(place_name, grid_geojson_path, zones_config):
         
         b_features = extract_building_features(b_in_cell, cell.geometry)
         r_features = extract_road_features(r_in_cell)
+        
         feature_row = {
             'city_name': place_name,
             'grid_id': idx,
             'target_style': target_style, 
+            'geometry': cell.geometry,
             **b_features, 
             **r_features,
         }
+        city_rows.append(feature_row)
         
-        city_features.append(feature_row)
+    if not city_rows:
+        return []
         
-    print(f"--> Finished {place_name}. Generated {len(city_features)} valid cells.")
-    return city_features
+    city_gdf = gpd.GeoDataFrame(city_rows, crs=local_utm_crs)
+    
+    print("Calculating spatial lag features (Context)...")
+    centroids = city_gdf.geometry.centroid
+    spatial_lags = []
+    
+    for i, centroid in enumerate(centroids):
+        distances = centroids.distance(centroid)
+        neighbors = city_gdf[(distances <= 600) & (distances > 0)]
+        
+        if not neighbors.empty:
+            spatial_lags.append(neighbors['building_density'].mean())
+        else:
+            spatial_lags.append(city_gdf['building_density'].iloc[i])
+            
+    city_gdf['building_density_spatial_lag'] = spatial_lags
+    city_df = pd.DataFrame(city_gdf.drop(columns=['geometry']))
+    
+    print(f"--> Finished {place_name}. Generated {len(city_df)} valid cells with spatial context.")
+    return city_df.to_dict(orient='records')
 
 if __name__ == "__main__":
     config = load_pipeline_config("../data/config.json")
